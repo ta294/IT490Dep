@@ -3,7 +3,7 @@ Description=SystemD Rabbit Listener
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/php -f /var/www/html/490auth_and_website/490_authsys/testRabbitMQServer2.php 
+ExecStart=/usr/bin/php -f /var/www/html/490/490auth_and_website/490_authsys/testRabbitMQServer2.php 
 
 [Install]
 WantedBy=multi-user.target
