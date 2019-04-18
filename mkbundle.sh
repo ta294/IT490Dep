@@ -168,6 +168,9 @@ depQABE() {
     #Rename the FE folder so it matches version number (DOES NOT WORK FOR BE BECAUSE FILENAME  HARD CODES)
     #/usr/bin/sshpass -p $password ssh root@$deployip "mv /var/www/html/490auth_and_website_$folderVersionFixed/site /var/www/html/490auth_and_website_$folderVersionFixed/site_$versionFixed"
 
+    # Set permissions of log files
+    /usr/bin/sshpass -p $password ssh root@$destip "chown -R www-data:www-data /var/www/html/490/490auth_and_website/490_authsys/*.log"
+
     # Update the MySQL database
     # filename variable from above is also being used here
     updatedb=`/usr/bin/php devUpdateQAPROD.php $ip $versionFixed $filename $type $sendto`
@@ -252,6 +255,10 @@ depPRODBE() {
 
     #Rename the FE folder so it matches version number (DOES NOT WORK FOR BE BECAUSE FILENAME  HARD CODES)
     #/usr/bin/sshpass -p $password ssh root@$deployip "mv /var/www/html/490auth_and_website_$folderVersionFixed/site /var/www/html/490auth_and_website_$folderVersionFixed/site_$versionFixed"
+
+    # Set permissions of log files
+    /usr/bin/sshpass -p $password ssh root@$destip "chown -R www-data:www-data /var/www/html/490/490auth_and_website/490_authsys/*.log"
+
 
     # Update the MySQL database
     # filename variable from above is also being used here
