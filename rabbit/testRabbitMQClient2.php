@@ -28,6 +28,48 @@ function checkVer($sqlStatement) {
 }
 
 
+function good($type) {
+        $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
+        if (isset($argv[1]))
+        {
+                $msg = $argv[1];
+        }
+        else
+        {
+                $msg = "test message";
+        }
+
+        $request = array();
+        $request['type'] = "mgood";
+        $request['sqlStatement'] = $sqlStatement;
+        $request['message'] = $msg;
+        $response = $client->send_request($request);
+
+        return $response;
+}
+
+
+function bad($type) {
+        $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
+        if (isset($argv[1]))
+        {
+                $msg = $argv[1];
+        }
+        else
+        {
+                $msg = "test message";
+        }
+
+        $request = array();
+        $request['type'] = "mbad";
+        $request['sqlStatement'] = $sqlStatement;
+        $request['message'] = $msg;
+        $response = $client->send_request($request);
+
+        return $response;
+}
+
+
 function updateDB($sqlStatement) {
         $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
         if (isset($argv[1]))

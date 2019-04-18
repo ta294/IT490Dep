@@ -33,6 +33,36 @@ function updateDB($sqlStatement) {
 
 }
 
+function good($type) {
+        $sqlStatement = "SELECT MAX(version) FROM status WHERE status='$status' AND type='$type'";
+        $db = mysqli_connect("127.0.0.1", "admin", "password", "490db");
+        $runQuery = mysqli_query($db, $type);
+        $queryResults = mysqli_num_rows($runQuery);
+
+        if (!$db) {
+                die("MySQL Connection Failed: " . mysqli_connect_error() );
+        }
+
+        $query = "update status set status = 'good' where type = '$type' and status = 'pending'";
+        $mysqli->query($query);
+}
+
+function bad($type) {
+        $sqlStatement = "SELECT MAX(version) FROM status WHERE status='$status' AND type='$type'";
+        $db = mysqli_connect("127.0.0.1", "admin", "password", "490db");
+        $runQuery = mysqli_query($db, $type);
+        $queryResults = mysqli_num_rows($runQuery);
+
+        if (!$db) {
+                die("MySQL Connection Failed: " . mysqli_connect_error() );
+        }
+
+        $query = "update status set status = 'bad' where type = '$type' and status = 'pending'";
+        $mysqli->query($query);
+}
+
+
+
 
 function requestProcessor($request)
 {
