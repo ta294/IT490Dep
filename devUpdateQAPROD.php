@@ -31,7 +31,7 @@ $filename = $argv[3];
 $type = $argv[4];
 $sendto = $argv[5];
 
-if ($ip == "192.168.1.7") {
+if ($ip == "192.168.1.3") {
      if ($sendto == "qa" && $type == "fe") {
         depqaFE($version, $filename);
      } else if ($sendto == "qa" && $type == "be" ) {

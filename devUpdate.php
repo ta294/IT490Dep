@@ -18,9 +18,9 @@ $ip = $argv[1];
 $version = $argv[2];
 $filename = $argv[3];
 
-if  ($ip == "192.168.1.3") {
+if  ($ip == "192.168.1.6") {
     devFEUpdate($version, $filename);
-} else if ($ip == "192.168.1.19") {
+} else if ($ip == "192.168.1.7") {
     devBEUpdate($version, $filename);
 }
 

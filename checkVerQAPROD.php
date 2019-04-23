@@ -60,7 +60,7 @@ $level = $argv[2];
 $type = $argv[3];
 $sendto = $argv[4];
 
-if ($ip == "192.168.1.7") {
+if ($ip == "192.168.1.3") {
      if ($sendto == "qa" && $type == "fe") {
         depqaFE($level, $type); 
      } else if ($sendto == "qa" && $type == "be" ) {

@@ -8,9 +8,9 @@ ip="192.168.1.7"
 devFE() {
     level="dev"
     type="fe"
-    destip="192.168.1.3" #Send the bundle to this IP
-    #username="ubuntu"
-    #password="njit123"
+    destip="192.168.1.6" #Send the bundle to this IP
+    username="tekken"
+    password="njit123"
     version=`/usr/bin/php checkVer.php $ip $level $type`
     versionFixed="$(echo -e "${version}" | tr -d '[:space:]')" #Removes whitespace
     #echo $versionFixed
@@ -29,7 +29,7 @@ devFE() {
     #/usr/bin/sshpass -p $password ssh root@$deployip "mkdir -p /var/www/html/490/490auth_and_website"
 
     # Send the bundle 
-    /usr/bin/sshpass -p $password scp $FILE root@$destip:/home/$username/bundles/.
+    /usr/bin/sshpass -p $password scp $FILE $username@$destip:/home/$username/bundles/.
     #/usr/bin/sshpass -p $password scp $FILE root@$deployip:/var/www/html/490auth_and_website_$folderVersionFixed/.
 
     filename="bundle_dev_fe_$versionFixed.tar"
@@ -52,8 +52,8 @@ devFE() {
 devBE() {
     level="dev"
     type="be"
-    destip="192.168.1.3" #Send the bundle to this IP
-    username="ubuntu"
+    destip="192.168.1.7" #Send the bundle to this IP
+    username="tekken"
     password="njit123"
     version=`/usr/bin/php checkVer.php $ip $level $type`
     versionFixed="$(echo -e "${version}" | tr -d '[:space:]')" #Removes whitespace
@@ -72,7 +72,7 @@ devBE() {
     #/usr/bin/sshpass -p $password ssh root@$deployip "mkdir -p /var/www/html/490/490auth_and_website"
 
     # Send the bundle
-    /usr/bin/sshpass -p $password scp $FILE root@$destip:/home/$username/bundles/.
+    /usr/bin/sshpass -p $password scp $FILE $username@$destip:/home/$username/bundles/.
 
     filename="bundle_dev_be_$versionFixed.tar"
 
@@ -93,8 +93,8 @@ depQAFE() {
     level="dev" # even though this is QA, grab latest of dev
     type="fe"
     sendto="qa"
-    destip="192.168.1.3" #Send the bundle to this IP
-    username="ubuntu"
+    destip="192.168.1.4" #Send the bundle to this IP
+    username="tekken"
     password="njit123"
     version=`/usr/bin/php checkVerQAPROD.php $ip $level $type $sendto`
     versionFixed="$(echo -e "${version}" | tr -d '[:space:]')" #Removes whitespace
@@ -137,8 +137,8 @@ depQABE() {
     level="dev" # even though this is QA, grab latest of dev
     type="be"
     sendto="qa"
-    destip="192.168.1.3" #Send the bundle to this IP
-    username="ubuntu"
+    destip="192.168.1.8" #Send the bundle to this IP
+    username="tekken"
     password="njit123"
     version=`/usr/bin/php checkVerQAPROD.php $ip $level $type $sendto`
     versionFixed="$(echo -e "${version}" | tr -d '[:space:]')" #Removes whitespace
@@ -184,8 +184,8 @@ depPRODFE() {
     level="dev" # even though this is QA, grab latest of dev
     type="fe"
     sendto="prod"
-    destip="192.168.1.3" #Send the bundle to this IP
-    username="ubuntu"
+    destip="192.168.1.5" #Send the bundle to this IP
+    username="tekken"
     password="njit123"
     version=`/usr/bin/php checkVerQAPROD.php $ip $level $type $sendto`
     versionFixed="$(echo -e "${version}" | tr -d '[:space:]')" #Removes whitespace
@@ -225,7 +225,7 @@ depPRODBE() {
     level="dev" # even though this is QA, grab latest of dev
     type="be"
     sendto="prod"
-    destip="192.168.1.3" #Send the bundle to this IP
+    destip="192.168.1.10" #Send the bundle to this IP
     username="ubuntu"
     password="njit123"
     version=`/usr/bin/php checkVerQAPROD.php $ip $level $type $sendto`
@@ -266,16 +266,15 @@ depPRODBE() {
 
 }
 
-# Deploy Server is 192.168.1.7
-#default ip is 192.168.1.18
-if [ "$ip" == "192.168.1.3" ]; then
-        echo "The IP is 192168.1.18 - dev FE"
+# Deploy Server is 192.168.1.3
+if [ "$ip" == "192.168.1.6" ]; then
+        echo "The IP is 192168.1.6 - dev FE"
 	devFE
-elif [ "$ip" == "192.168.1.19" ]; then
-        echo "The IP is 192.168.1.19 - dev BE"
-	devBE
 elif [ "$ip" == "192.168.1.7" ]; then
-	echo "The IP is 192.168.1.7 - Deploy Server"
+        echo "The IP is 192.168.1.7 - dev BE"
+	devBE
+elif [ "$ip" == "192.168.1.3" ]; then
+	echo "The IP is 192.168.1.3 - Deploy Server"
         if [ "$1" == "qa" ]; then
            if [ "$2" == "fe" ]; then
 		depQAFE

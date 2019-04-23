@@ -72,13 +72,13 @@ $ip = $argv[1];
 $level = $argv[2];
 $type = $argv[3];
 
-if  ($ip == "192.168.1.3") {
+if  ($ip == "192.168.1.6") {
     devFE($level, $type);
-} else if ($ip == "192.168.1.19") {
+} else if ($ip == "192.168.1.7") {
     devBE($level, $type);
-} else if ($ip == "192.168.1.25") {
+} else if ($ip == "192.168.1.5") {
     prodFE($level, $type);
-} else if ($ip == "192.168.1.26") {
+} else if ($ip == "192.168.1.10") {
     prodBE($level, $type);
 }
 
