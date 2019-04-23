@@ -2,8 +2,8 @@
 set -x
 
 #level=$1
-ip="192.168.1.7"
-#ip="$( ip -4 addr show enp0s9 | grep -oP '(?<=inet\s)\d+(\.\d+){3}' )"
+#ip="192.168.1.7"
+ip="$( ip -4 addr show enp0s9 | grep -oP '(?<=inet\s)\d+(\.\d+){3}' )"
 
 devFE() {
     level="dev"
