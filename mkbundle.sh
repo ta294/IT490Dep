@@ -8,7 +8,7 @@ ip="$( ip -4 addr show enp0s9 | grep -oP '(?<=inet\s)\d+(\.\d+){3}' )"
 devFE() {
     level="dev"
     type="fe"
-    destip="192.168.1.6" #Send the bundle to this IP
+    destip="192.168.1.3" #Send the bundle to this IP
     username="tekken"
     password="njit123"
     version=`/usr/bin/php checkVer.php $ip $level $type`
@@ -17,7 +17,7 @@ devFE() {
 
     # Package the bundle
     FILE="bundles/bundle_dev_fe_$versionFixed.tar"  #this is the .tar file that will be made
-    SRCDIR="/var/www/html/490auth_and_website"
+    SRCDIR="/var/www/html/490/490auth_and_website"
     #tar -cPzf $FILE $SRCDIR/*
     tar -C $SRCDIR -cPzf $FILE site   #rename site to the folder you want to backup
 
@@ -52,7 +52,7 @@ devFE() {
 devBE() {
     level="dev"
     type="be"
-    destip="192.168.1.7" #Send the bundle to this IP
+    destip="192.168.1.3" #Send the bundle to this IP
     username="tekken"
     password="njit123"
     version=`/usr/bin/php checkVer.php $ip $level $type`
@@ -61,7 +61,7 @@ devBE() {
 
     # Package the bundle
     FILE="bundles/bundle_dev_be_$versionFixed.tar"  #this is the .tar file that will be made
-    SRCDIR="/var/www/html/490auth_and_website"
+    SRCDIR="/var/www/html/490/490auth_and_website"
     #tar -cPzf $FILE $SRCDIR/*
     tar -C $SRCDIR -cPzf $FILE 490_authsys   #rename site to the folder you want to backup
 
