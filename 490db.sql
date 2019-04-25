@@ -83,12 +83,10 @@ DROP TABLE IF EXISTS `dev`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `dev` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
   `level` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
-  `filename` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `filename` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -98,7 +96,7 @@ CREATE TABLE `dev` (
 
 LOCK TABLES `dev` WRITE;
 /*!40000 ALTER TABLE `dev` DISABLE KEYS */;
-INSERT INTO `dev` VALUES (1,'dev','fe',1,'bundle_dev_fe_1.tar'),(58,'dev','be',1,'bundle_dev_be_1.tar');
+INSERT INTO `dev` VALUES ('dev','fe',1,'bundle_dev_fe_1.tar'),('dev','be',1,'bundle_dev_be_1.tar');
 /*!40000 ALTER TABLE `dev` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,13 +187,11 @@ DROP TABLE IF EXISTS `status`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `status` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
   `level` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
-  `filename` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `filename` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -205,7 +201,7 @@ CREATE TABLE `status` (
 
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
-INSERT INTO `status` VALUES (29,'qa','fe',1,'good','bundle_qa_fe_1.tar'),(30,'qa','be',1,'good','bundle_qa_be_1.tar'),(32,'prod','fe',1,'good','bundle_prod_fe_1.tar'),(33,'prod','be',1,'good','bundle_prod_be_1.tar');
+INSERT INTO `status` VALUES ('qa','fe',1,'good','bundle_dev_fe_1.tar'),('qa','be',1,'good','bundle_dev_be_1.tar'),('prod','fe',1,'good','bundle_dev_fe_1.tar'),('prod','be',1,'good','bundle_dev_be_1.tar');
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 

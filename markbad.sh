@@ -36,12 +36,12 @@ prodFE() {
     username="tekken"
     password="njit123"
 
+    #markbad after getting last known good
+    markbad=`/usr/bin/php markbad.php $level $type`
+
     filename=`/usr/bin/php checkVer.php $ip $level $type`
     filenameFixed="$(echo -e "${filename}" | tr -d '[:space:]')" #Removes whitespace
     echo "$filenameFixed";
-
-    #markbad after getting last known good
-    markbad=`/usr/bin/php markbad.php $level $type`
 
     # Create directory if not exists
     /usr/bin/sshpass -p $password ssh root@$destip "mkdir -p /var/www/html/490/490auth_and_website"
@@ -50,7 +50,7 @@ prodFE() {
     /usr/bin/sshpass -p $password ssh root@$destip "rm -rf /var/www/html/490/490auth_and_website/site"
 
     # Grab bundle and send to production
-    /usr/bin/sshpass -p $password scp root@$deployip:/home/$username/bundles/$filenameFixed /home/$username/bundles/.
+    /usr/bin/sshpass -p $password scp /home/$username/bundles/$filenameFixed $username@$destip:/home/$username/bundles/.
 
     /usr/bin/sshpass -p $password ssh root@$destip "tar -xvf /home/$username/bundles/$filenameFixed -C /var/www/html/490/490auth_and_website/"
 
@@ -62,17 +62,17 @@ prodBE() {
     ip="192.168.1.10"
     level="prod"
     type="be"
-    destip="192.168.1.3" #Send the bundle to this IP
+    destip="192.168.1.10" #Send the bundle to this IP
     deployip="192.168.1.3"
     username="tekken"
     password="njit123"
 
+    #markbad after getting last known good
+    markbad=`/usr/bin/php markbad.php $level $type`
+
     filename=`/usr/bin/php checkVer.php $ip $level $type`
     filenameFixed="$(echo -e "${filename}" | tr -d '[:space:]')" #Removes whitespace
     echo "$filenameFixed";
-
-    #markbad after getting last known good
-    markbad=`/usr/bin/php markbad.php $level $type`
 
     # Create directory if not exists
     /usr/bin/sshpass -p $password ssh root@$destip "mkdir -p /var/www/html/490/490auth_and_website"
@@ -81,7 +81,7 @@ prodBE() {
     /usr/bin/sshpass -p $password ssh root@$destip "rm -rf /var/www/html/490/490auth_and_website/490_authsys"
 
     # Grab bundle and send to production
-    /usr/bin/sshpass -p $password scp root@$deployip:/home/$username/bundles/$filenameFixed /home/$username/bundles/.
+    /usr/bin/sshpass -p $password scp /home/$username/bundles/$filenameFixed $username@$destip:/home/$username/bundles/.
 
     /usr/bin/sshpass -p $password ssh root@$destip "tar -xvf /home/$username/bundles/$filenameFixed -C /var/www/html/490/490auth_and_website/"
 

@@ -137,7 +137,7 @@ depQABE() {
     level="dev" # even though this is QA, grab latest of dev
     type="be"
     sendto="qa"
-    destip="192.168.1.4" #Send the bundle to this IP
+    destip="192.168.1.8" #Send the bundle to this IP
     username="tekken"
     password="njit123"
     version=`/usr/bin/php checkVerQAPROD.php $ip $level $type $sendto`

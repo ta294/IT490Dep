@@ -14,13 +14,13 @@ function depqaBE($version, $filename) {
 }
 
 function depprodfe($version, $filename) {
-     $sqlStatement = "INSERT IGNORE INTO status(level, type, version, status, filename) VALUES('prod', 'fe', '$version', 'pending', '$filename')";
+     $sqlStatement = "INSERT IGNORE INTO status(level, type, version, status, filename) VALUES('prod', 'fe', '$version', 'good', '$filename')";
      updateDB($sqlStatement);
 
 }
 
 function depprodbe($version, $filename) {
-     $sqlStatement = "INSERT IGNORE INTO status(level, type, version, status, filename) VALUES('prod', 'be', '$version', 'pending', '$filename')";
+     $sqlStatement = "INSERT IGNORE INTO status(level, type, version, status, filename) VALUES('prod', 'be', '$version', 'good', '$filename')";
      updateDB($sqlStatement);
 
 }
