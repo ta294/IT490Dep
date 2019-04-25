@@ -137,7 +137,7 @@ depQABE() {
     level="dev" # even though this is QA, grab latest of dev
     type="be"
     sendto="qa"
-    destip="192.168.1.8" #Send the bundle to this IP
+    destip="192.168.1.4" #Send the bundle to this IP
     username="tekken"
     password="njit123"
     version=`/usr/bin/php checkVerQAPROD.php $ip $level $type $sendto`
@@ -181,7 +181,7 @@ depQABE() {
 
 
 depPRODFE() {
-    level="dev" # even though this is QA, grab latest of dev
+    level="qa" # Grab the latest version of qa because prod row hasn't been made yet
     type="fe"
     sendto="prod"
     destip="192.168.1.5" #Send the bundle to this IP
@@ -222,11 +222,11 @@ depPRODFE() {
 }
 
 depPRODBE() {
-    level="dev" # even though this is QA, grab latest of dev
+    level="qa" # Grab the latest version of qa because prod row hasn't been made yet
     type="be"
     sendto="prod"
     destip="192.168.1.10" #Send the bundle to this IP
-    username="ubuntu"
+    username="tekken"
     password="njit123"
     version=`/usr/bin/php checkVerQAPROD.php $ip $level $type $sendto`
     versionFixed="$(echo -e "${version}" | tr -d '[:space:]')" #Removes whitespace

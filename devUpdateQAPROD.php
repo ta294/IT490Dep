@@ -2,25 +2,25 @@
 include('rabbit/testRabbitMQClient2.php');
 
 function depqaFE($version, $filename) {
-     $sqlStatement = "INSERT INTO status(level, type, version, status, filename) VALUES('qa', 'fe', '$version', 'pending', '$filename')";
+     $sqlStatement = "INSERT IGNORE INTO status(level, type, version, status, filename) VALUES('qa', 'fe', '$version', 'pending', '$filename')";
      updateDB($sqlStatement);
 
 }
 
 function depqaBE($version, $filename) {
-     $sqlStatement = "INSERT INTO status(level, type, version, status, filename) VALUES('qa', 'be', '$version', 'pending', '$filename')";
+     $sqlStatement = "INSERT IGNORE INTO status(level, type, version, status, filename) VALUES('qa', 'be', '$version', 'pending', '$filename')";
      updateDB($sqlStatement);
 
 }
 
 function depprodfe($version, $filename) {
-     $sqlStatement = "INSERT INTO status(level, type, version, status, filename) VALUES('prod', 'fe', '$version', 'pending', '$filename')";
+     $sqlStatement = "INSERT IGNORE INTO status(level, type, version, status, filename) VALUES('prod', 'fe', '$version', 'pending', '$filename')";
      updateDB($sqlStatement);
 
 }
 
 function depprodbe($version, $filename) {
-     $sqlStatement = "INSERT INTO status(level, type, version, status, filename) VALUES('prod', 'be', '$version', 'pending', '$filename')";
+     $sqlStatement = "INSERT IGNORE INTO status(level, type, version, status, filename) VALUES('prod', 'be', '$version', 'pending', '$filename')";
      updateDB($sqlStatement);
 
 }

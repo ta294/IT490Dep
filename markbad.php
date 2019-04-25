@@ -37,7 +37,6 @@ function prodFE($level, $type) {
           foreach($tmpArray as $key => $row) {
               $sqlStatement2 = "UPDATE status SET status='bad' WHERE level='$level' AND type='$type' AND version='$row'";
               updateDB($sqlStatement2);
-
           }
      }
 

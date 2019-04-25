@@ -3,7 +3,7 @@ set -x
 
 #level=$1
 #ip="192.168.1.18"
-ip="192.168.1.26"
+#ip="192.168.1.6"
 #ip="$( ip -4 addr show enp0s9 | grep -oP '(?<=inet\s)\d+(\.\d+){3}' )"
 
 
@@ -11,7 +11,7 @@ qaFE() {
     level="qa"
     type="fe"
     destip="192.168.1.3" #Send the bundle to this IP
-    username="ubuntu"
+    username="tekken"
     password="njit123"
     markbad=`/usr/bin/php markbad.php $level $type`
 
@@ -22,24 +22,26 @@ qaBE() {
     level="qa"
     type="be"
     destip="192.168.1.3" #Send the bundle to this IP
-    username="ubuntu"
+    username="tekken"
     password="njit123"
     markbad=`/usr/bin/php markbad.php $level $type`
 }
 
 prodFE() {
-    ip="192.168.1.25"
-    level="qa"
+    ip="192.168.1.5"
+    level="prod"
     type="fe"
     destip="192.168.1.3" #Send the bundle to this IP
     deployip="192.168.1.3"
-    username="ubuntu"
+    username="tekken"
     password="njit123"
-    markbad=`/usr/bin/php markbad.php $level $type`
 
     filename=`/usr/bin/php checkVer.php $ip $level $type`
     filenameFixed="$(echo -e "${filename}" | tr -d '[:space:]')" #Removes whitespace
     echo "$filenameFixed";
+
+    #markbad after getting last known good
+    markbad=`/usr/bin/php markbad.php $level $type`
 
     # Create directory if not exists
     /usr/bin/sshpass -p $password ssh root@$destip "mkdir -p /var/www/html/490/490auth_and_website"
@@ -57,18 +59,20 @@ prodFE() {
 }
 
 prodBE() {
-    ip="192.168.1.26"
-    level="qa"
+    ip="192.168.1.10"
+    level="prod"
     type="be"
     destip="192.168.1.3" #Send the bundle to this IP
     deployip="192.168.1.3"
-    username="ubuntu"
+    username="tekken"
     password="njit123"
-    markbad=`/usr/bin/php markbad.php $level $type`
 
     filename=`/usr/bin/php checkVer.php $ip $level $type`
     filenameFixed="$(echo -e "${filename}" | tr -d '[:space:]')" #Removes whitespace
     echo "$filenameFixed";
+
+    #markbad after getting last known good
+    markbad=`/usr/bin/php markbad.php $level $type`
 
     # Create directory if not exists
     /usr/bin/sshpass -p $password ssh root@$destip "mkdir -p /var/www/html/490/490auth_and_website"

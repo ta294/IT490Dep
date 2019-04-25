@@ -2,14 +2,14 @@
 include('rabbit/testRabbitMQClient2.php');
 
 function devFEUpdate($version, $filename) {
-     $sqlStatement = "INSERT INTO dev(level, type, version, filename) VALUES('dev', 'fe', '$version', '$filename')";
+     $sqlStatement = "INSERT IGNORE INTO dev(level, type, version, filename) VALUES('dev', 'fe', '$version', '$filename')";
      updateDB($sqlStatement);
 
 }
 
 
 function devBEUpdate($version, $filename) {
-     $sqlStatement = "INSERT INTO dev(level, type, version, filename) VALUES('dev', 'be', '$version', '$filename')";
+     $sqlStatement = "INSERT IGNORE INTO dev(level, type, version, filename) VALUES('dev', 'be', '$version', '$filename')";
      updateDB($sqlStatement);
 
 }

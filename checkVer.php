@@ -32,10 +32,9 @@ function prodFE($level, $type) {
      foreach ($version as $tmpArray) {
           foreach($tmpArray as $key => $row) {
                $version = $row;
-	       //echo $version;
           }
      }
-     $sqlStatement2 = "SELECT filename FROM status WHERE status='good' AND level='$level' AND type='$type' AND version='$row'";
+     $sqlStatement2 = "SELECT filename FROM status WHERE status='good' AND level='$level' AND type='$type' AND version='$version'";
      $filename = checkVer($sqlStatement2);
      foreach ($filename as $tmpArray2) {
         foreach($tmpArray2 as $key => $row) {
@@ -53,7 +52,6 @@ function prodBE($level, $type) {
      foreach ($version as $tmpArray) {
           foreach($tmpArray as $key => $row) {
                $version = $row;
-	       //echo $version;
           }
      }
      $sqlStatement2 = "SELECT filename FROM status WHERE status='good' AND level='$level' AND type='$type' AND version='$row'";

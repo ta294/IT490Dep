@@ -11,7 +11,7 @@ qaFE() {
     level="qa"
     type="fe"
     destip="192.168.1.3" #Send the bundle to this IP
-    username="ubuntu"
+    username="tekken"
     password="njit123"
     markgood=`/usr/bin/php markgood.php $level $type`
 
@@ -22,7 +22,7 @@ qaBE() {
     level="qa"
     type="be"
     destip="192.168.1.3" #Send the bundle to this IP
-    username="ubuntu"
+    username="tekken"
     password="njit123"
     markgood=`/usr/bin/php markgood.php $level $type`
 

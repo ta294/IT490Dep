@@ -29,7 +29,7 @@ function depqaBE($level, $type) {
 
 
 function depprodFE($level, $type) {
-     $sqlStatement = "SELECT MAX(version) FROM dev WHERE level='$level' AND type='$type'";
+     $sqlStatement = "SELECT MAX(version) FROM status WHERE level='$level' AND type='$type'";
      $version = checkVer($sqlStatement);
      foreach ($version as $tmpArray) {
           foreach($tmpArray as $key => $row) {
@@ -42,7 +42,7 @@ function depprodFE($level, $type) {
 }
 
 function depprodBE($level, $type) {
-     $sqlStatement = "SELECT MAX(version) FROM dev WHERE level='$level' AND type='$type'";
+     $sqlStatement = "SELECT MAX(version) FROM status WHERE level='$level' AND type='$type'";
      $version = checkVer($sqlStatement);
      foreach ($version as $tmpArray) {
           foreach($tmpArray as $key => $row) {
