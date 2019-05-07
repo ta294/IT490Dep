@@ -1,20 +1,36 @@
-sudo ufw enable
-
+#Install ufw
 sudo apt install ufw
 
+#Block all incoming
 sudo ufw default deny incoming
 
+#Allow incoming
 sudo ufw default allow outgoing
 
-sudo ufw allow ssh
-
+#Allow ssh
 sudo ufw allow 22
 
+#Allow rabbit
 sudo ufw allow 5672
 
+#Allow rabbit dev site
 sudo ufw allow 15672
 
-sudo ufw allow http
+#Allow all from dev FE
+sudo ufw allow from 192.168.1.6
+
+#Allow all from prod FE
+sudo ufw allow from 192.168.1.5
+
+#Allow all from qa FE
+sudo ufw allow from 192.168.1.4
+
+#Allow all from deploy
+sudo ufw allow from 192.168.1.3
+
+#Enable the firewall
+sudo ufw enable
+
 
 
 
