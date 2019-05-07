@@ -4,7 +4,7 @@ sudo apt install ufw
 #Block all incoming
 sudo ufw default deny incoming
 
-#Allow incoming
+#Allow outgoing
 sudo ufw default allow outgoing
 
 #Allow ssh
