@@ -259,10 +259,11 @@ depPRODBE() {
     # Set permissions of log files
     /usr/bin/sshpass -p $password ssh root@$destip "chown -R www-data:www-data /var/www/html/490/490auth_and_website/490_authsys/*.log"
 
-
     # Update the MySQL database
     # filename variable from above is also being used here
     updatedb=`/usr/bin/php devUpdateQAPROD.php $ip $versionFixed $filename $type $sendto`
+
+    /usr/bin/sshpass -p $password ssh root@$destip "systemctl start 490sysd"
 
 }
 
