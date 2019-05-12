@@ -12,10 +12,9 @@ then
 else
         echo "$HOST didn't reply"
 
-       #`./chkconnection.sh`
-       ifconfig enp0s9 192.168.1.5 netmask 255.255.255.0 up
-       systemctl start 490sysd
-
+        ifconfig enp0s9 192.168.1.5 netmask 255.255.255.0 up
+        systemctl restart 490sysd
+        systemctl restart apache2
 fi
 #EOF
 
