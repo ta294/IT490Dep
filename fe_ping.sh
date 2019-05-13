@@ -17,6 +17,7 @@ else
         ifconfig enp0s9 192.168.1.11 netmask 255.255.255.0 up
         #systemctl restart 490sysd
         systemctl restart apache2
+	break
 fi
 
 done
