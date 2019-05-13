@@ -6,6 +6,8 @@ HOST=192.168.1.5
 ping -c1 $HOST 1>/dev/null 2>/dev/null
 SUCCESS=$?
 
+while [ true ]; do
+     sleep 30
 if [ $SUCCESS -eq 0 ]
 then
         echo "$HOST has replied"
@@ -16,5 +18,6 @@ else
         systemctl restart 490sysd
         systemctl restart apache2
 fi
+done
 #EOF
 
