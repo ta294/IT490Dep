@@ -27,7 +27,7 @@ function devBE($level, $type) {
 
 
 function prodFE($level, $type) {
-     $sqlStatement = "SELECT MAX(version) FROM status WHERE level='$level' AND type='$type' AND status='good'";
+     $sqlStatement = "SELECT MAX(version) FROM status WHERE level='prod' AND type='fe' AND status='good'";
      $version = checkVer($sqlStatement);
      foreach ($version as $tmpArray) {
           foreach($tmpArray as $key => $row) {
