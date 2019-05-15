@@ -87,7 +87,7 @@ CREATE TABLE `dev` (
   `type` varchar(255) DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   `filename` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `dev` (
 
 LOCK TABLES `dev` WRITE;
 /*!40000 ALTER TABLE `dev` DISABLE KEYS */;
-INSERT INTO `dev` VALUES ('dev','fe',1,'bundle_dev_fe_1.tar'),('dev','be',1,'bundle_dev_be_1.tar');
+INSERT INTO `dev` VALUES ('dev','fe',1,'bundle_dev_fe_1.tar'),('dev','be',1,'bundle_dev_be_1.tar'),('dev','fe',2,'bundle_dev_fe_2.tar'),('dev','be',2,'bundle_dev_be_2.tar');
 /*!40000 ALTER TABLE `dev` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +192,7 @@ CREATE TABLE `status` (
   `version` int(11) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `filename` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +201,7 @@ CREATE TABLE `status` (
 
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
-INSERT INTO `status` VALUES ('qa','fe',1,'good','bundle_dev_fe_1.tar'),('qa','be',1,'good','bundle_dev_be_1.tar'),('prod','fe',1,'good','bundle_dev_fe_1.tar'),('prod','be',1,'good','bundle_dev_be_1.tar');
+INSERT INTO `status` VALUES ('qa','fe',1,'good','bundle_dev_fe_1.tar'),('qa','be',1,'good','bundle_dev_be_1.tar'),('prod','be',1,'good','bundle_dev_be_1.tar'),('prod','fe',2,'good','bundle_dev_fe_2.tar'),('prod','be',2,'good','bundle_dev_be_2.tar'),('prod','fe',1,'good','bundle_dev_fe_1.tar'),('qa','fe',2,'good','bundle_dev_fe_2.tar'),('qa','be',2,'good','bundle_dev_be_2.tar');
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-18 19:51:29
+-- Dump completed on 2019-05-15 14:38:37
