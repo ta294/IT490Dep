@@ -1,0 +1,157 @@
+IT490-002 Tekken 4
+Andre Catarino 
+Lionel Alliaj
+Simranjeer Kaur
+Tuhaid Asif
+
+IT490 Server Documentation / CHANGE LOG
+Repository List
+Midterm
+https://github.com/ac639/490_authsys/tree/midterm (Rabbit back end) - Andre Catarino
+https://github.com/la92/IT490Midterm.git (Password Management/recovery) - Lionel Alliaj
+https://github.com/la92/IT490.git (Search Feature) - Lionel Alliaj
+https://github.com/ta294/IT490Project/tree/midterm (Database, API) - Tuhaid Asif
+https://github.com/sk948/it490-complete/tree/midterm (Front end) - Simranjeet Kaur
+To Test midterm deliverables: https://github.com/ac639/490midterm
+
+Final
+https://github.com/ta294/IT490Dep.git
+https://github.com/ac639/IT490_Project_Final
+
+
+
+Project Set up Instructions
+Setting up the Midterm
+Git clone -	https://github.com/ac639/490_authsys/tree/midterm
+     	https://github.com/la92/IT490Midterm.git 
+https://github.com/la92/IT490.git
+https://github.com/ta294/IT490Project/tree/midterm
+https://github.com/sk948/it490-complete/tree/midterm
+https://github.com/ac639/490midterm (testing purposes)
+    
+      2.  Once  cloned cd 490midterm/490_authsys to access rabbitMQ Server files.
+
+      3. Sudo nano testRabbitMQ.ini
+Change the BROKER_HOST = 127.0.0.1
+
+      4. Run ./testRabbitMQServer2.php
+
+      5. Go to  http://localhost/490auth_and_website/login.html
+
+      7. Log in 
+User: andre
+Pwd: password
+
+
+     8. To make the My Account page to view 
+Go to /var/www/html/490auth_and_websites/490_authsys
+Run chown www-data:www-data -R *.log
+Then run sudo !! sudo chown www-data:www-data -R *.log
+Password: njit123
+
+Project Set up Instructions
+
+Setting up the Final
+
+Machines IP’s
+
+DEV BE			192.168.1.7
+DEV FE			192.168.1.6                           
+QA BE				192.168.1.8
+QA FE				192.168.1.4
+PROD BE(MASTER)		192.168.1.5
+PROD BE(BACKUP)		192.168.1.10
+PROD FE(MASTER)		192.168.1.11
+PROD FE(BACKUP)		192.168.1.12
+DEP				192.168.1.3
+NAGIOS			192.168.1.2
+
+Git clone https://github.com/ta294/IT490Dep.git 
+
+      2. Deployment System Setup
+         Run the RabbitMQ listener 
+Go in to cd IT490ep/rabbit
+	./testRabbitMQServer2.php
+testRabbitMQServer BEGIN
+
+In the DEV BACKEND VM run 
+
+3. Git clone https://github.com/ta294/IT490Dep.git 
+
+4. Go into cd IT490Dep 
+
+5. Run ./mkbundle.sh 
+//This will send the next version to the Deploy VM
+
+6. On Deploy VM to check the received version
+
+7. Go into cd bundles
+	To check packages type ls and the list should come up 
+
+In the DEV FRONTEND VM run 
+
+8. Git clone https://github.com/ta294/IT490Dep.git 
+
+9. Go into cd IT490Dep 
+
+10. Run ./mkbundle.sh 
+//This will send the next version to the Deploy VM
+
+11. On Deploy VM to check the received version
+
+12. Go into cd bundles
+	To check packages type ls and the list should come up 
+
+FOR DEPLOY OF QA FRONTEND
+
+13. Run the RabbitMQ listener 
+Go in to cd IT490ep/rabbit
+	./testRabbitMQServer2.php
+testRabbitMQServer BEGIN
+	
+14. On the deployment system run 
+	Go in to cd git/IT490Dep then run 
+	./mkbundle.sh qa fe
+15. On the QA FE run 
+	Go in to cd IT490Dep then run
+	./markgood.sh fe or ./markbad.sh qa be
+
+FOR DEPLOY OF QA BACKEND
+
+16. Run the RabbitMQ listener 
+Go in to cd IT490ep/rabbit
+	./testRabbitMQServer2.php
+testRabbitMQServer BEGIN
+	
+17. On the deployment system run 
+	Go in to cd git/IT490Dep then run 
+	./mkbundle.sh qa be
+18. On the QA FE run 
+	Go in to cd IT490Dep then run
+	./markgood.sh be or ./markbad.sh qa be
+
+FOR DEV TO PROD
+-BACKEND
+ 19. Run the RabbitMQ listener 
+Go in to cd IT490Dep/rabbit
+	./testRabbitMQServer2.php
+testRabbitMQServer BEGIN
+
+20. On deploy run cd git/IT490Dep then run
+		./mkbundle.sh prod be
+
+
+
+21. On prod FrontEnd run cd bundles then run ls
+
+-FRONTEND
+
+22. Run the RabbitMQ listener 
+Go in to cd IT490Dep/rabbit
+	./testRabbitMQServer2.php
+testRabbitMQServer BEGIN
+
+23. On deploy run cd git/IT490Dep then run
+		./mkbundle.sh prod fe
+
+24. On prod FrontEnd run cd bundles then run ls
